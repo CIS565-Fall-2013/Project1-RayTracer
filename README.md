@@ -235,6 +235,21 @@ Objects are defined in the following fashion:
 An example TAKUAscene file setting up two frames inside of a Cornell Box can be
 found in the scenes/ directory.
 
+For meshes, note that the base code will only read in .obj files. For more 
+information on the .obj specification see http://en.wikipedia.org/wiki/Wavefront_.obj_file.
+
+An example of a mesh object is as follows:
+
+OBJECT 0
+mesh tetra.obj
+material 0
+frame 0
+TRANS       0 5 -5
+ROTAT       0 90 0
+SCALE       .01 10 10 
+
+Check the Google group for some sample .obj files of varying complexity.
+
 -------------------------------------------------------------------------------
 README
 -------------------------------------------------------------------------------
@@ -274,11 +289,12 @@ performance differences.
 -------------------------------------------------------------------------------
 THIRD PARTY CODE POLICY
 -------------------------------------------------------------------------------
-* Use of any third-party code must be approved by asking on Piazza.  If it is
-  approved, all students are welcome to use it.  Generally, we approve use of
-  third-party code that is not a core part of the project.  For example, for the
-  ray tracer, we would approve using a third-party library for loading models,
-  but would not approve copying and pasting a CUDA function for doing refraction.
+* Use of any third-party code must be approved by asking on our Google Group.  
+  If it is approved, all students are welcome to use it.  Generally, we approve 
+  use of third-party code that is not a core part of the project.  For example, 
+  for the ray tracer, we would approve using a third-party library for loading 
+  models, but would not approve copying and pasting a CUDA function for doing 
+  refraction.
 * Third-party code must be credited in README.md.
 * Using third-party code without its approval, including using another
   student's code, is an academic integrity violation, and will result in you
@@ -313,4 +329,5 @@ file in the root directory detailing the following
 * Instructions for building and running your project if they differ from the
   base code
 * A performance writeup as detailed above.
-* A list of all third-party code used
+* A list of all third-party code used.
+* This Readme file, augmented or replaced as described above in the README section.
