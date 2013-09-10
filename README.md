@@ -117,38 +117,38 @@ reference are marked with the comment LOOK.
   complete:
     * cudaRaytraceCore() handles kernel launches and memory management; this
       function already contains example code for launching kernels,
-transferring geometry and cameras from the host to the device, and transferring
-image buffers from the host to the device and back. You will have to complete
-this function to support passing materials and lights to CUDA.
+      transferring geometry and cameras from the host to the device, and transferring
+      image buffers from the host to the device and back. You will have to complete
+      this function to support passing materials and lights to CUDA.
     * raycastFromCameraKernel() is a function that you need to implement. This
       function once correctly implemented should handle camera raycasting. 
     * raytraceRay() is the core raytracing CUDA kernel; all of your raytracing
       logic should be implemented in this CUDA kernel. raytraceRay() should
-take in a camera, image buffer, geometry, materials, and lights, and should
-trace a ray through the scene and write the resultant color to a pixel in the
-image buffer.
+      take in a camera, image buffer, geometry, materials, and lights, and should
+      trace a ray through the scene and write the resultant color to a pixel in the
+      image buffer.
 
 * intersections.h contains functions for geometry intersection testing and
   point generation. You will need to complete:
     * boxIntersectionTest(), which takes in a box and a ray and performs an
       intersection test. This function should work in the same way as
-sphereIntersectionTest().
+      sphereIntersectionTest().
     * getRandomPointOnSphere(), which takes in a sphere and returns a random
       point on the surface of the sphere with an even probability distribution.
-This function should work in the same way as getRandomPointOnCube(). You can
-(although do not necessarily have to) use this to generate points on a sphere
-to use a point lights, or can use this for area lighting.
+      This function should work in the same way as getRandomPointOnCube(). You can
+      (although do not necessarily have to) use this to generate points on a sphere
+      to use a point lights, or can use this for area lighting.
 
 * interactions.h contains functions for ray-object interactions that define how
   rays behave upon hitting materials and objects. You will need to complete:
     * getRandomDirectionInSphere(), which generates a random direction in a
       sphere with a uniform probability. This function works in a fashion
-similar to that of calculateRandomDirectionInHemisphere(), which generates a
-random cosine-weighted direction in a hemisphere.
+      similar to that of calculateRandomDirectionInHemisphere(), which generates a
+      random cosine-weighted direction in a hemisphere.
     * calculateBSDF(), which takes in an incoming ray, normal, material, and
       other information, and returns an outgoing ray. You can either implement
-this function for ray-surface interactions, or you can replace it with your own
-function(s).
+      this function for ray-surface interactions, or you can replace it with your own
+      function(s).
 
 You will also want to familiarize yourself with:
 
@@ -164,12 +164,12 @@ know two important points on how GLM is used in this project:
 
 * In this project, indices in GLM vectors (such as vec3, vec4), are accessed
   via swizzling. So, instead of v[0], v.x is used, and instead of v[1], v.y is
-used, and so on and so forth.
+  used, and so on and so forth.
 * GLM Matrix operations work fine on NVIDIA Fermi cards and later, but
   pre-Fermi cards do not play nice with GLM matrices. As such, in this project,
-GLM matrices are replaced with a custom matrix struct, called a cudaMat4, found
-in cudaMat4.h. A custom function for multiplying glm::vec4s and cudaMat4s is
-provided as multiplyMV() in intersections.h.
+  GLM matrices are replaced with a custom matrix struct, called a cudaMat4, found
+  in cudaMat4.h. A custom function for multiplying glm::vec4s and cudaMat4s is
+  provided as multiplyMV() in intersections.h.
 
 -------------------------------------------------------------------------------
 TAKUAscene FORMAT:
@@ -207,10 +207,10 @@ Cameras are defined in the following fashion:
 * RES (float x) (float y)								//resolution
 * FOVY (float fovy)										//vertical field of
   view half-angle. the horizonal angle is calculated from this and the
-reslution
+  reslution
 * ITERATIONS (float interations)							//how many
   iterations to refine the image, only relevant for supersampled antialiasing,
-depth of field, area lights, and other distributed raytracing applications
+  depth of field, area lights, and other distributed raytracing applications
 * FILE (string filename)									//file to output
   render to upon completion
 * frame (frame number)									//start of a frame
@@ -224,7 +224,7 @@ Objects are defined in the following fashion:
 * OBJECT (object ID)										//object header
 * (cube OR sphere OR mesh)								//type of object, can
   be either "cube", "sphere", or "mesh". Note that cubes and spheres are unit
-sized and centered at the origin.
+  sized and centered at the origin.
 * material (material ID)									//material to
   assign this object
 * frame (frame number)									//start of a frame
@@ -276,27 +276,27 @@ THIRD PARTY CODE POLICY
 -------------------------------------------------------------------------------
 * Use of any third-party code must be approved by asking on Piazza.  If it is
   approved, all students are welcome to use it.  Generally, we approve use of
-third-party code that is not a core part of the project.  For example, for the
-ray tracer, we would approve using a third-party library for loading models,
-but would not approve copying and pasting a CUDA function for doing refraction.
+  third-party code that is not a core part of the project.  For example, for the
+  ray tracer, we would approve using a third-party library for loading models,
+  but would not approve copying and pasting a CUDA function for doing refraction.
 * Third-party code must be credited in README.md.
 * Using third-party code without its approval, including using another
   student's code, is an academic integrity violation, and will result in you
-receiving an F for the semester.
+  receiving an F for the semester.
 
 -------------------------------------------------------------------------------
 SELF-GRADING
 -------------------------------------------------------------------------------
 * On the submission date, email your grade, on a scale of 0 to 100, to Liam,
-  liamboone+cis565, with a one paragraph explanation.  Be concise and
-realistic.  Recall that we reserve 30 points as a sanity check to adjust your
-grade.  Your actual grade will be (0.7 * your grade) + (0.3 * our grade).  We
-hope to only use this in extreme cases when your grade does not realistically
-reflect your work - it is either too high or too low.  In most cases, we plan
-to give you the exact grade you suggest.
+  liamboone+cis565@gmail.com, with a one paragraph explanation.  Be concise and
+  realistic.  Recall that we reserve 30 points as a sanity check to adjust your
+  grade.  Your actual grade will be (0.7 * your grade) + (0.3 * our grade).  We
+  hope to only use this in extreme cases when your grade does not realistically
+  reflect your work - it is either too high or too low.  In most cases, we plan
+  to give you the exact grade you suggest.
 * Projects are not weighted evenly, e.g., Project 0 doesn't count as much as
   the path tracer.  We will determine the weighting at the end of the semester
-based on the size of each project.
+  based on the size of each project.
 
 -------------------------------------------------------------------------------
 SUBMISSION
